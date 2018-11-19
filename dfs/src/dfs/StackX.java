@@ -4,7 +4,7 @@ import java.util.Stack;
 
 class Vertex
 {
-	public int label; // label (e.g. ‘A’)
+	public int label; // label (e.g. â€˜Aâ€™)
 	public boolean wasVisited;
 	public boolean top;
 	public boolean left;
@@ -58,9 +58,10 @@ class Graph
 		
 		for (int i = 0; i < maxVerts; i++)
 		{
-			if (i % Math.sqrt(maxVerts) == 0 && i != 0)
+			if (i % Math.sqrt(maxVerts) == 0 && i != 0 )
 			{
 				maze[mazeRowCounter] += "+";
+				
 				mazeRowCounter += 2;
 			}
 			
@@ -73,6 +74,30 @@ class Graph
 				else
 				{
 					maze[mazeRowCounter] += "+-";
+				}
+			}
+			
+			else 
+			{
+				if (maze[mazeRowCounter] == null)
+				{
+					maze[mazeRowCounter] = "+ ";
+				}
+				else
+				{
+					maze[mazeRowCounter] += "+ ";
+				}
+			}
+			
+			if (vertexList[i].left)
+			{
+				if (maze[mazeRowCounter+1] == null)
+				{
+					maze[mazeRowCounter+1] = "| ";
+				}
+				else
+				{
+					maze[mazeRowCounter+1] += "| ";
 				}
 			}
 		}
@@ -232,7 +257,7 @@ class Graph
 				theStack.push(v); // push it
 			}
 		} // end while
-		// stack is empty, so we’re done
+		// stack is empty, so weâ€™re done
 		for(int j=0; j<nVerts; j++) // reset flags
 			vertexList[j].wasVisited = false;
 	} 
